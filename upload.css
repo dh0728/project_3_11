@@ -1,0 +1,44 @@
+
+.addImage {
+    margin: auto;
+    padding: auto;
+    width: 400px;
+    height: 400px;
+    border: 3px solid lightgray;
+    /* border-radius: 20px 20px / 20px 20px; */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.select {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.addText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    margin-top: 20px;
+    width: 400px;
+    height: 200px;
+    border: 3px solid lightgray;
+    border-radius: 10px;
+    overflow: hidden;
+    resize: none;
+}
+
+.text::placeholder {
+    color: rgb(182, 180, 180);
+}
+
+.button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
