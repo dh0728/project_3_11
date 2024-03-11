@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 업로드</title>
+
+    <!-- jQuery를 import 합니다 -->
+    
+    <link rel="stylesheet" href="upload.css">
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="add">
+      <form class="inputImg" method="post" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
+        <!-- 이미지 띄울 공간 -->
+        <div class="addImage" id="imageShow">
+        </div>
+        <div class="select"><input type="file" accept="image/*" onchange="loadFile(this)"></div>
+      </form>
+    </div>
+
+    <div class="addText">
+      <textarea name="#" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
+    </div>
+
+    <div class="button"><button id="upload">업로드하기</button></div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="upload.js" defer></script>
+</body>
+
+</html>
