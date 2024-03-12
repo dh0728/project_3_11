@@ -1,9 +1,12 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect")
 const methodOverride = require("method-override");
+const cookieParser = require("cookie-parser");
+
 //const errorhandler = require("./middlewares/errorhandler") //오류처리 미들웨어 추가
 
 const server = express();
+server.use(cookieParser());
 
 // 엔진 설정
 server.set("view engine", "ejs");
