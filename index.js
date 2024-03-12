@@ -1,5 +1,6 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect")
+const methodOverride = require("method-override");
 //const errorhandler = require("./middlewares/errorhandler") //오류처리 미들웨어 추가
 
 const server = express();
@@ -7,6 +8,8 @@ const server = express();
 // 엔진 설정
 server.set("view engine", "ejs");
 server.set("views", "./views");
+server.use(express.static("./public"));
+server.use(methodOverride("_method"));
 
 const port = 3000;
 dbConnect();
