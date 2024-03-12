@@ -19,7 +19,7 @@ const addPostForm = (req, res) => {
 //@route POST /home 
 const createPost = asyncHandler(async (req, res)=>{
   console.log(req.body);
-  const { userid, postImage, postText, goodNum, comment} = req.body;
+  const { postImage, postText} = req.body;
   userid=req.params.id;
   goodNum=0;
   comment=null;
