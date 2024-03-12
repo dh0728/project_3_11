@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JSW_SECRET;
-console.log("◆◇ ", jwtSecret, " ◇◆");
+// console.log("◆◇ ", jwtSecret, " ◇◆");
 
 // @desc Get Login page
 // @route GET /
@@ -30,7 +30,7 @@ const loginUser = asyncHandler(async (req, res) => {
   // obejct ID 사용해서 JWT 토큰 생성
   const token = jwt.sign({ id: user._id }, jwtSecret);
   res.cookie("token", token, { httpOnly: true });
-  res.redirect("/home");
+  res.redirect(`/home/${username}`);
 });
 
 // @desc Get Login page
@@ -44,10 +44,10 @@ const getJoin = (req, res) => {
 const joinUser = asyncHandler(async (req, res) => {
   // 사용자 입력 정보 받아오기
   const { user_id, name, email, password, password2 } = req.body;
-  // 비밀번호 암호화
-  const hashedPassword = await bcrypt.hash(password, 10);
   // 비밀번호 확인
   if (password === password2) {
+    // 비밀번호 암호화
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ userid: user_id, name: name, email: email, password: hashedPassword})
     // res.status(201).json({ message: "Register success", user: user});
     res.redirect("/");
