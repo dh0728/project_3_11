@@ -1,5 +1,6 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect")
+//const errorhandler = require("./middlewares/errorhandler") //오류처리 미들웨어 추가
 
 const server = express();
 
@@ -15,19 +16,11 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));  // 
 
 //routes
-server.use("/", require("./routes/loginRoutes"))
-server.use("/home", require("./routes/contactRoutes"))
+server.use("/", require("./routes/loginRoutes"));
+server.use("/home", require("./routes/contactRoutes"));
 
-server.listen(3000, ()=>{
-  console.log("server started")
-})
+//server.use(errorhandler); //오류처리 미들웨어
 
-//login화면 시작화면
-//erver.use("/", require("./routes/loginRoutes"));
-
-//로그인시 피트?
-server.use("/home",require("./routes/contactRoutes"));
-
-server.listen(3000, ()=>{
+server.listen(port, ()=>{
   console.log(`${port}번 포트 사용 중`)
 })

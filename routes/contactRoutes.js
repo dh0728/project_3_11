@@ -1,7 +1,8 @@
 const express = require('express');
 const router =express.Router();
-const {getHome} = require("../controllers/contactController")
+const {getPost,createPost,updateContact,deletPost} = require("../controllers/contactController")
 
-router.route("/").get(getHome);
+
+router.route("/:id").get(getPost).post(createPost).put(updateContact).delete(deletPost);
 
 module.exports =router;
