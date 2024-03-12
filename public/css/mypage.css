@@ -1,0 +1,55 @@
+.profile {
+  margin: auto;
+  margin-top: 70px;
+  width: 700px;
+  height: 200px;
+  border: 1px solid;
+}
+
+.profileImage {
+  width: 150px;
+  height: 150px;
+  margin-top: 25px;
+  margin-left: 50px;
+  border: 1px solid;
+  float: left;
+}
+
+.post {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  margin: 50px;
+  margin-left: 70px;
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.followers {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  margin: 50px;
+  margin-left: 0px;
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.followings {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  margin: 50px;
+  margin-left: 0px;
+  display: inline-block;
+}
+
+#myPosts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  margin-top: 50px;
+  width: 1000px;
+  border: 1px solid;
+}
+

@@ -1,25 +1,30 @@
-const mongoose =require("mongoose");
+const mongoose = require("mongoose");
 
-const contactSchema = new mongoose.Schema(
-  {
-    name:{
-      type:String,
-      required:true
+const postSchema = new mongoose.Schema({
+  userid: {
+    type: String,
+    required: true,
+  },
+  postImage: {
+    type: String,
+    required: function(){
+      return !this.postText;// postText가 없을 때 postImage가 필요하도록 설정합니다.
+    }
+  },
+  postText: {
+    type: String,
+    required: function() {
+      return !this.postImage; // postImage가 없을 때 postText가 필요하도록 설정합니다.
     },
-    email:{
-      type:String,
-    },
-    phone:{
-      type:String,
-      required:[true,"전화번호는 꼭 기입해 주라"]
-    },
-    
-  },{timestamps: true}
-);
+  },
+  goodNum: {
+    type: Number,
+    default: 0,
+  },
+  comment: {
+    type: String,
+  },
+});
 
-const Contact = mongoose.model("Contact", contactSchema);
-
-module.exports= Contact;
-
-
-
+const Post = mongoose.model("Post", postSchema);  
+module.exports = {Post};
