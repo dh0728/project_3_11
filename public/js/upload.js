@@ -11,7 +11,7 @@ function loadFile(input) {
   newImage.style.height = "100%";
   newImage.style.objectFit = "cover";
 
-  //이미지를 image-show div에 추가
+  //이미지를 imageShow div에 추가
   let container = document.getElementById('imageShow');
   container.innerHTML = '';
   container.appendChild(newImage);
