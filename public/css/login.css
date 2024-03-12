@@ -14,8 +14,9 @@ body {
 .login-container {
   width: 320px;
   padding: 70px;
-  border-radius: 5px;
+  border-radius: 30px;
   background-color: #fff;
+  text-align: center;
 }
 
 .login-form {
@@ -58,7 +59,17 @@ a {
 
 #join {
   display: flex;
-  text-align: center;
+  flex-direction: column;
+  padding: 10px;
+  border: none;
+  color: #fff;
+  background-color: blueviolet;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+#join:hover{
+  background-color: hsl(297, 53%, 50%);
 }
 
 h5{
