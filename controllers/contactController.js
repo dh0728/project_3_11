@@ -11,6 +11,10 @@ const getPost = asyncHandler(async (req,res)=>{
   res.status(200).send("")
 }); 
 
+const addPostForm = (req, res) => {
+  res.render("upload")
+} 
+
 //@desc Post 게시글 업로드
 //@route POST /home 
 const createPost = asyncHandler(async (req, res)=>{
@@ -55,4 +59,4 @@ const deletPost= asyncHandler(async(req,res)=>{
   res.status(200).send(`delete: ${req.params.id}`)
 });
 
-module.exports = {getPost, createPost, updateContact,deletPost};
+module.exports = {getPost, createPost, updateContact,deletPost,addPostForm};
