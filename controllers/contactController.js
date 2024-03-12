@@ -20,6 +20,9 @@ const addPostForm = (req, res) => {
 const createPost = asyncHandler(async (req, res)=>{
   console.log(req.body);
   const { userid, postImage, postText, goodNum, comment} = req.body;
+  userid=req.params.id;
+  goodNum=0;
+  comment=null;
   if(!postImage && !postText){
     return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
   }

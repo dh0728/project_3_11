@@ -14,22 +14,27 @@
 <body>
   <div id="container">
     <div id="add">
-      <form class="inputImg" method="post" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
+      <form action="/home/upload" class="inputImg" method="post" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
         <!-- 이미지 띄울 공간 -->
-        <div class="addImage" id="imageShow">
+        <!-- <div class="addImage" id="imageShow">
         </div>
-        <div class="select"><input type="file" accept="image/*" onchange="loadFile(this)"></div>
+        <div name="postImage" class="select"><input type="file" accept="image/*" onchange="loadFile(this)"></div> -->
+        <div class="addText">
+          <textarea name="postImage" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
+        </div>
       </form>
     </div>
 
-    <div class="addText">
-      <textarea name="#" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
+    <form action="/home/upload">
+      <div class="addText">
+        <textarea name="postText" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
+      </div>
+  
+      <div class="button"><button id="upload">업로드하기</button></div>
     </div>
-
-    <div class="button"><button id="upload">업로드하기</button></div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="../public/js/upload.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../public/js/upload.js" defer></script>
+    </form>
 </body>
 
 </html>

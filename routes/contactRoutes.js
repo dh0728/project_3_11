@@ -3,9 +3,9 @@ const router =express.Router();
 const {getPost,createPost,updateContact,deletPost,addPostForm} = require("../controllers/contactController")
 
 router
-  .route("/upload")
+  .route("/upload/:id")
   .get(addPostForm)
-  // .post(checkLogin,createContact) 
+  .post(createPost) 
 
 router
   .route("/:id")
