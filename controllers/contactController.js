@@ -2,6 +2,9 @@ const asyncHandler = require("express-async-handler");
 const {Post}= require("../models/contactModel");
 const {User}= require("../models/userModel");
 
+const multer = require("multer")
+const path = require('path')
+
 //@desc Get 프로필 정보 확인
 //@route Get /home 
 const getPost = asyncHandler(async (req,res)=>{
@@ -17,24 +20,96 @@ const addPostForm = (req, res) => {
 
 //@desc Post 게시글 업로드
 //@route POST /home 
+// const createPost = asyncHandler(async (req, res)=>{
+//   console.log(req.body);
+//   const { postImage, postText} = req.body;
+//   userid=req.params.id;
+//   goodNum=0;
+//   comment=null;
+//   if(!postImage && !postText){
+//     return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
+//   }
+//   const post = await Post.create({
+//     userid,
+//     postImage,
+//     postText,
+//     goodNum,
+//     comment,
+//   });
+//   res.status(200).send("Contacts page")
+// })
+
+// const storage= multer.diskStorage({
+//   distination : function(req, file, cb){
+//     cb(null, './public/image')
+//   },
+//   filename : function(req, file, cb){
+//     cb(null,file.originalname)
+//   }
+// });
+
+// const upload = multer({
+//   storage : storage,
+//   fileFilter: function (req, file, cb){
+//     var ext=path.extname(file.originalname);
+//     if(ext !=='.png' && ext !=='.jpg' && ext !=='.jpeg'){
+//       return cb(new Error('PNG, JPG 파일만 업로드 가능합니다.'))
+//     }
+//     cb(null, true)
+//   },
+//   limits:{
+//     fileSize:1024*1024
+//   }
+// })
+
+//@desc Post 게시글 업로드
+//@route POST /home 
+// const createPost = asyncHandler(async (req, res)=>{
+//   console.log(req.body);
+//   const { postText} = req.body;
+//   const postImage = req.file;
+//   console.log(req.body);
+//   console.log(req.file)
+//   let userid="c001"
+//   let goodNum=0;
+//   let comment=null;
+//   if(!postImage && !postText){
+//     return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
+//   }
+//   const post = await Post.create({
+//     userid,
+//     postImage: {
+//       data:req.file.buffer,
+//       constentType: req.fiel.mimetype,
+//     },
+//     postText,
+//     goodNum,
+//     comment,
+//   });
+//   res.status(200).send("Contacts page")
+// })
+const storage = multer.memoryStorage()
+const upload = multer({storage:storage});
+
 const createPost = asyncHandler(async (req, res)=>{
-  console.log(req.body);
-  const { postImage, postText} = req.body;
-  userid=req.params.id;
-  goodNum=0;
-  comment=null;
-  if(!postImage && !postText){
-    return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
-  }
+  upload.single('postImage');
+  let userid="c001"
+  let goodNum=0;
+  let comment=null;
+  const { postText} = req.body;
+  console.log(postText)
   const post = await Post.create({
-    userid,
-    postImage,
-    postText,
-    goodNum,
-    comment,
-  });
-  res.status(200).send("Contacts page")
-})
+        userid,
+        postImage: {
+          data:req.file.buffer,
+          constentType: req.fiel.mimetype,
+        },
+        postText,
+        goodNum,
+        comment,
+      });
+      res.status(200).send("Contacts page")
+});
 
 //@desc Update 게시글 
 //@route Put /home/:id 

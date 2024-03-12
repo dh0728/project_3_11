@@ -6,10 +6,8 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   postImage: {
-    type: String,
-    required: function(){
-      return !this.postText;// postText가 없을 때 postImage가 필요하도록 설정합니다.
-    }
+    data:Buffer,
+    contentType:String,
   },
   postText: {
     type: String,
