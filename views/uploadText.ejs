@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>게시물 업로드</title>
-
-    <!-- jQuery를 import 합니다 -->
-    
-    <link rel="stylesheet" href="../public/css/upload.css">
+    <link rel="stylesheet" href="/css/upload.css">
 </head>
 <body>
   <div id="container">
-    <form action="/home/uploadText/:id" method="POST" >
+    <div><img src="/src/logo.png" width="150" alt="logo"></div>
+    <form action="/home/uploadText" method="POST" >
       <div class="addText">
         <textarea name="postText" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
       </div>
