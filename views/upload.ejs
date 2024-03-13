@@ -4,21 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>게시물 업로드</title>
-
-    <!-- jQuery를 import 합니다 -->
-    
-    <link rel="stylesheet" href="../public/css/upload.css">
+    <link rel="stylesheet" href="/css/upload.css">
 </head>
 
 <body>
   <div id="container">
+    <div><img src="/src/logo.png" width="150" alt="logo"></div>
     <div id="add">
       <form action="/home/upload" class="inputImg" method="POST" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
         <!-- 이미지 띄울 공간 -->
         <div class="addImage" id="imageShow">
         </div>
         <div class="select">
-          <input type="file"name="postImage"accept="image/*" onchange="loadFile(this)",>
+          <input type="file" class="" name="postImage"accept="image/*" onchange="loadFile(this)",>
         </div>
         <button id="upload">다음</button>
         <!-- <div class="button"><button id="upload" onclick="location.href='home/uploadText/:id'" >다음</button></div> -->
@@ -41,6 +39,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../public/js/upload.js" defer></script>
     </form> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/upload.js" defer></script>
 </body>
 
 </html>
