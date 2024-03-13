@@ -23,21 +23,24 @@ const addPostTextForm = (req, res) => {
 //@desc Post 게시글 업로드
 //@route POST /home 
 const createPost = asyncHandler(async (req, res)=>{
-  console.log(req.file.path);
+  console.log(req.files);
   console.log(req.body)
-  const userid=req.params.id;
-  postImage=req.file.path;
+  // const userid=req.params.id;
+  const postImageArray = [];
+  for(let i=0; i<req.files.length; i++){
+    postImageArray.push(req.files[i].path)
+  }
   postText = req.body.postText.toString();
-  console.log(postImage);
   console.log(postText);
   goodNum=0;
+  userid= "c"
   comment=null;
-  if(!postImage && !postText){
+  if(!postImageArray && !postText){
     return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
   }
   const post = await Post.create({
     userid,
-    postImage,
+    postImage: postImageArray,
     postText,
     goodNum,
     comment,

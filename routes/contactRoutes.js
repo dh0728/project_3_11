@@ -29,9 +29,9 @@ router
 //  .delete(deletPost);
 
 router
-  .route("/upload/:id")
+  .route("/upload/")
   .get(addPostForm)
-  .post(upload.single('postImage'),createPost)
+  .post(upload.array('postImage'),createPost)
 router
   .route("/uploadText")
   .get(addPostTextForm)    
