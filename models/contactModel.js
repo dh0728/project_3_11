@@ -6,8 +6,10 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   postImage: {
-    data:Buffer,
-    contentType:String,
+    type:String,
+    required: function() {
+      return !this.postText; // postImage가 없을 때 postText가 필요하도록 설정합니다.
+    }
   },
   postText: {
     type: String,
@@ -21,7 +23,7 @@ const postSchema = new mongoose.Schema({
   },
   comment: {
     type: String,
-    default: null
+    default: null,
   },
 });
 

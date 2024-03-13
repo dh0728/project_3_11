@@ -7,40 +7,31 @@
 
     <!-- jQuery를 import 합니다 -->
     
-    <link rel="stylesheet" href="../public/css/upload.css">
+    <link rel="stylesheet" href="/css/upload.css">
+    <!-- <script src="/js/upload.js"></script> -->
 </head>
 
 <body>
   <div id="container">
     <div id="add">
-      <form action="/home/upload" class="inputImg" method="POST" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
+      <form action="/home/upload/:id" class="inputImg" method="POST" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
         <!-- 이미지 띄울 공간 -->
         <div class="addImage" id="imageShow">
+          <img id="uploadedImage" alt="Uploaded Image">
         </div>
         <div class="select">
-          <input type="file"name="postImage"accept="image/*" onchange="loadFile(this)",>
+          <input id="up" type="file"name="postImage"accept="image/*" onchange="loadFile(this)">
+          <!-- 텍스트 -->
+          <div class="addText">
+            <textarea name="postText" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
+          </div>
+          <button id="upload">다음</button>
         </div>
-        <button id="upload">다음</button>
-        <!-- <div class="button"><button id="upload" onclick="location.href='home/uploadText/:id'" >다음</button></div> -->
-      </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="/js/upload.js" defer></script>
+        </form>
       </div>
     </div>
-    <script>
-      // '다음' 버튼 클릭 시 페이지를 네비게이션하는 JavaScript 코드
-      document.getElementById("upload").addEventListener("click", function() {
-          location.href = "/home/uploadText"; // ':id' 부분에 실제 id 값을 설정해야 합니다.
-      });
-    </script>
-    <!-- <form action="/home/upload/:id" method="POST" >
-      <div class="addText">
-        <textarea name="postText" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
-      </div>
-  
-      <div class="button"><button id="upload">업로드하기</button></div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../public/js/upload.js" defer></script>
-    </form> -->
 </body>
 
-</html>
+</html> 

@@ -16,3 +16,7 @@ function loadFile(input) {
   container.innerHTML = '';
   container.appendChild(newImage);
 }
+// '다음' 버튼 클릭 시 페이지를 네비게이션하는 JavaScript 코드
+let next= document.getElementById("upload").addEventListener("click", function() {
+  location.href = "views/uploadText"; 
+});
