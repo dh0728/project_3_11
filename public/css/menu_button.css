@@ -1,0 +1,53 @@
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* 가운데 정렬하려면 */
+  width: 100%;
+}
+
+button {
+  padding: 15px 50px; /* 상하 좌우 여백조정 */
+  margin: 0 5px; /* 버튼 사이 간격 조정 */
+  background-color: blueviolet;
+  border: none;
+  border-radius: 30px;
+}
+
+button:hover {
+  background-color: hsl(297, 53%, 50%);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 50px); /* 버튼의 높이만큼 빼줍니다. */
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.button-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.button-container button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+}

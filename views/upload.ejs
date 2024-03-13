@@ -22,11 +22,12 @@
         </div>
         <div class="select">
           <input type="file" class="" name="postImage"accept="image/*" onchange="loadFiles(this)" multiple>
+          <button type="button" onclick="deleteCurrentImage()" class="delete">삭제</button>
           <!-- 텍스트 -->
           <div class="addText">
             <textarea name="postText" class="text" maxlength="300" placeholder="300자까지 입력 가능합니다."></textarea>
           </div>
-          <button type="submit" id="upload">다음</button>
+          <button id="upload">업로드하기</button>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="/js/upload.js" defer></script>
