@@ -19,11 +19,18 @@
 
 let currentImg = -1; // 현재 보여지는 이미지의 인덱스
 let totalImages = 0; // 총 이미지 수
+const maxImageCount = 10; // 최대 선택 가능한 이미지 수
 
 function loadFiles(input) {
 
   let imageShow = document.getElementById('imageShow');
   let fileInput = input;
+
+  // 최대 선택 가능한 이미지 수 체크
+  if (totalImages + input.files.length > maxImageCount) {
+    alert(`${maxImageCount}장까지 선택 가능합니다.`);
+    return;
+  }
   
   for (let i = 0; i < input.files.length; i++) {
       let file = input.files[i];
