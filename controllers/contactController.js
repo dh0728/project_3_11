@@ -2,7 +2,11 @@ const asyncHandler = require("express-async-handler");
 const {Post}= require("../models/contactModel");
 const {User}= require("../models/userModel");
 
-
+//@desc Get 피트화면 
+//@route Get /home 
+const getHome= (req, res) => {
+  res.render("index")
+} 
 
 //@desc Get 프로필 정보 확인
 //@route Get /home 
@@ -143,4 +147,4 @@ const deletPost= asyncHandler(async(req,res)=>{
   res.status(200).send(`delete: ${req.params.id}`)
 });
 
-module.exports = {getPost, createPost, updateContact,deletPost,addPostForm,addPostTextForm};
+module.exports = {getPost, createPost, updateContact,deletPost,addPostForm,addPostTextForm, getHome};

@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-  <div id="container"><img src="/src/logo.png"></img><div id="logout"><button id="logout_btn">로그아웃</button></div></div>
+  <div id="container"><img src="/src/logo.png"></img>
+  <div id="logout"><a  id="logout_btn" href="/logout">로그아웃</a>
+  </div></div>
   <script>
     // 반복할 횟수 (데이터베이스 정보 가져와야함)
     const repeatCount = 5;
@@ -31,7 +33,6 @@
       // 여기에 데이터베이스에서 텍스트를 가져오는 로직을 구현해야함
       return "데이터베이스에서 가져온 텍스트 내용";
     }
-
     // 내용 반복해서 출력
     const container = document.getElementById("container");
     for (let i = 0; i < repeatCount; i++) {
