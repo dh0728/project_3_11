@@ -2,13 +2,43 @@
 .addImage {
     margin: auto;
     padding: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 400px;
     height: 400px;
     border: 3px solid hsl(297, 53%, 50%);
     /* border-radius: 20px 20px / 20px 20px; */
     border-radius: 10px;
     overflow: hidden;
+    object-fit: cover;
+    position: relative;
+}
+
+#imageCounter {
+    text-align: center;
+    font-size: 30px;
+}
+
+#btn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%); /* 버튼을 위로 50% 이동하여 수직 중앙에 배치 */
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    height: 100px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 30px;
+    border: none;
+    color: lightgray;
+}
+
+button:hover {
+    color: gray;
 }
 
 .select {
@@ -17,6 +47,7 @@
     padding: auto;
     margin-top: 15px;
 }
+
 
 .addText {
     display: flex;

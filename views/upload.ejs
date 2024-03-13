@@ -12,11 +12,16 @@
     <div><img src="/src/logo.png" width="150" alt="logo"></div>
     <div id="add">
       <form action="/home/upload" class="inputImg" method="POST" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
+        <div id="imageCounter">0 / 0</div>
         <!-- 이미지 띄울 공간 -->
         <div class="addImage" id="imageShow">
+          <div id="btn">
+            <button type="button" onclick="showPreviousImage()"><</button>
+            <button type="button" onclick="showNextImage()">></button>
+          </div>
         </div>
         <div class="select">
-          <input type="file" class="" name="postImage"accept="image/*" onchange="loadFile(this)",>
+          <input type="file" class="" name="postImage"accept="image/*" onchange="loadFiles(this)" multiple>
         </div>
         <button id="upload">다음</button>
         <!-- <div class="button"><button id="upload" onclick="location.href='home/uploadText/:id'" >다음</button></div> -->
