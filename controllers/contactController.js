@@ -1,13 +1,22 @@
 const asyncHandler = require("express-async-handler");
 const {Post}= require("../models/contactModel");
 const {User}= require("../models/userModel");
-
+const jwt = require("jsonwebtoken");
+const jwtSecret = process.env.JWT_SECRET;
 //@desc Get 피트화면 
 //@route Get /home 
 const getHome=asyncHandler(async (req, res) => {
   // console.log(req);
+  const token = req.cookies.token;
+  jwt.verify(token, jwtSecret, (err, decoded) => {
+    if (err) {
+      console.error('JWT verification failed:', err);
+      return;
+    }
+    console.log(decoded.id)
+  })
   let showdb = await Post.find()
-  // console.log(showdb[2].userid)
+  console.log(showdb[0].postImage)
   res.render('index',{showdb : showdb});
   // res.render("index")
 }) 
@@ -32,7 +41,7 @@ const createPost = asyncHandler(async (req, res)=>{
   // const userid=req.params.id;
   const postImageArray = [];
   for(let i=0; i<req.files.length; i++){
-    postImageArray.push(req.files[i].path)
+    postImageArray.push(req.files[i].filename)
   }
   postText = req.body.postText.toString();
   console.log(postText);

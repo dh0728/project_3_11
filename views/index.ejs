@@ -16,7 +16,8 @@
   <% for (let i = 0; i <showdb.length; i++) { %>
     <div id="box">
       <h2><%= showdb[i].userid %> <button>팔로우</button></h2>
-      <a href="<%= showdb[i].postImage %>" id="heart_image"></a>
+      <img src="/image/<%=showdb[i].postImage %>"></img>
+      <a href="" id="heart_image"></a>
       <div id="text_container"><a href="">좋아요 링크</a> <%= showdb[i].postText %></div>
     </div>
   <% } %>
