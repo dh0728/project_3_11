@@ -10,7 +10,7 @@ images.forEach(img => {
     modal.style.display = "block";
     // 데이터베이스에서 받아오기
     modalImg.src = this.src;
-    modalText.innerHTML = this.src;
+    // modalText.innerHTML = this.src;
   }
 });
 

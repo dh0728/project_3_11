@@ -13,19 +13,33 @@
       <div class="profileImage">
         <img src="/src/profile.png" alt="profileimg">
       </div>
-      <div class="post">게시물</div>
+      <div class="post">
+        <div>게시물</div>
+        <div><%=showdb.length %></div>
+      </div>
       <div class="followers">팔로워</div>
       <div class="followings">팔로잉</div>
     </div>
     <div id="myPosts" class="gridContainer">
       <!-- 임시데이터 -->
-      <div><img src="/src/profile.png" alt="profileimg" class="postImg"></div>
-      <div><img src="/src/profile.png" alt="profileimg" class="postImg"></div>
-      <div><img src="/src/profile.png" alt="profileimg" class="postImg"></div>
-      <div><img src="/src/logo.png" alt="profileimg" class="postImg"></div>
+      <% for (let i = 0; i <showdb.length; i++) { %>
+      <div>
+        <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" class="postImg">
+      </div>
+      <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modalImage" id="modalImage">
+        <div id="modalText" class="text"><%=showdb[i].postText %></div>
+        <div class="modalButtons">
+          <button id="editButton" onclick="location.href='/upload'">수정하기</button>
+          <button id="deleteButton" onclick="" >삭제하기</button>
+        </div>
+      </div>
+      <% } %>
     </div>
+    <%- include('./include/menu_button.ejs') %>
     <!-- 모달창 -->
-    <div id="modal" class="modal">
+    <!-- <div id="modal" class="modal">
       <span class="close">&times;</span>
       <img class="modalImage" id="modalImage">
       <div id="modalText" class="text"></div>
@@ -33,8 +47,7 @@
         <button id="editButton" onclick="location.href='/upload'">수정하기</button>
         <button id="deleteButton" onclick="" >삭제하기</button>
       </div>
-    </div>
-    
+    </div> -->
   </div>
   <script src="/js/mypage.js"></script>
 </body>

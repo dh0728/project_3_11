@@ -136,7 +136,7 @@
   display: block;
   text-align: center;
   width: 400px;
-  height: 150px;
+  height: 100px;
   border: 3px solid lightgray;
   border-radius: 10px;
   background-color: white;
@@ -162,4 +162,20 @@
 #editButton:hover,
 #deleteButton:hover {
   background-color: hsl(297, 53%, 50%);
+}
+
+button {
+  padding: 8px 16px;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* 가운데 정렬하려면 */
+  width: 100%;
 }

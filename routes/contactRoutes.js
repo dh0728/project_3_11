@@ -8,7 +8,7 @@ const uuid4 = require('uuid4');
 const cookieParser = require("cookie-parser");
 const checkLogin = require("../middlewares/checkLogin")
 
-const {getPost,createPost,updateContact,deletPost,addPostForm,addPostTextForm ,getHome} = require("../controllers/contactController")
+const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage} = require("../controllers/contactController")
 
 router.use(cookieParser());
 
@@ -33,6 +33,32 @@ router
   .route("/upload")
   .get(checkLogin,addPostForm)
   .post(checkLogin,upload.array('postImage'),createPost)
-
+router
+  .route("/mypage")
+  .get(checkLogin,getMypage)
 module.exports =router;
 
+
+
+// const storage= multer.diskStorage({
+//   distination : function(req, file, cb){
+//     cb(null, './public/image')
+//   },
+//   filename : function(req, file, cb){
+//     cb(null,file.originalname)
+//   }
+// });
+
+// const upload = multer({
+//   storage : storage,
+//   fileFilter: function (req, file, cb){
+//     var ext=path.extname(file.originalname);
+//     if(ext !=='.png' && ext !=='.jpg' && ext !=='.jpeg'){
+//       return cb(new Error('PNG, JPG 파일만 업로드 가능합니다.'))
+//     }
+//     cb(null, true)
+//   },
+//   limits:{
+//     fileSize:1024*1024
+//   }
+// })
