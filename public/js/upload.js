@@ -80,7 +80,7 @@ function deleteCurrentImage() {
     if (currentImg >= 0 && totalImages > 0) {
         document.getElementById('img-' + (currentImg + 1)).remove();
         
-        // 남은 이미지들의 ID를 업데이트
+        // 남은 이미지들
         for (let i = currentImg + 2; i <= totalImages; i++) {
             document.getElementById('img-' + i).id = 'img-' + (i - 1);
         }
@@ -100,7 +100,6 @@ function deleteCurrentImage() {
             }
             document.getElementById('img-' + (currentImg + 1)).style.display = 'block';
 
-            // 이미지 카운터 업데이트
             updateImageCounter(currentImg + 1, totalImages);
         } else {
             // 모든 이미지가 삭제된 경우 카운터 초기화

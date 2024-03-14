@@ -7,16 +7,35 @@
   <link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
-  <div id="container">
+  <div id="container" class="container">
+    <img src="/src/logo.png" alt="logo" class="logo">
     <div class="profile">
       <div class="profileImage">
         <img src="/src/profile.png" alt="profileimg">
       </div>
-      <div class="post"></div>
-      <div class="followers"></div>
-      <div class="followings"></div>
+      <div class="post">게시물</div>
+      <div class="followers">팔로워</div>
+      <div class="followings">팔로잉</div>
     </div>
-    <div id="myPosts" class="grid-container"></div>
+    <div id="myPosts" class="gridContainer">
+      <!-- 임시데이터 -->
+      <div><img src="/src/profile.png" alt="profileimg" class="postImg"></div>
+      <div><img src="/src/profile.png" alt="profileimg" class="postImg"></div>
+      <div><img src="/src/profile.png" alt="profileimg" class="postImg"></div>
+      <div><img src="/src/logo.png" alt="profileimg" class="postImg"></div>
+    </div>
+    <!-- 모달창 -->
+    <div id="modal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modalImage" id="modalImage">
+      <div id="modalText" class="text"></div>
+      <div class="modalButtons">
+        <button id="editButton" onclick="location.href='/upload'">수정하기</button>
+        <button id="deleteButton" onclick="" >삭제하기</button>
+      </div>
+    </div>
+    
   </div>
+  <script src="/js/mypage.js"></script>
 </body>
 </html>
