@@ -5,22 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/css/index.css">
+  <style>
+    /* 하트 이미지 크기 줄이기 */
+    #box img[src='/src/heart1.jpg'] {
+      width: 30px;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
   <div id="container">
-    <img src="/src/logo.png"></img>
+    <img src="/src/logo.png" alt="로고">
     <div id="logout">
-      <a  id="logout_btn" href="/logout">로그아웃</a>
+      <a id="logout_btn" href="/logout">로그아웃</a>
     </div>
   </div>
+
   <% for (let i = 0; i <showdb.length; i++) { %>
     <div id="box">
       <h2><%= showdb[i].userid %> <button>팔로우</button></h2>
-      <img src="/image/<%=showdb[i].postImage %>"></img>
-      <a href="" id="heart_image"></a>
-      <div id="text_container"><a href="">좋아요 링크</a> <%= showdb[i].postText %></div>
+      <img src="/src/heart1.jpg">
+      <img src="/image/<%=showdb[i].postImage %>">
+      <div id="text_container"><%= showdb[i].postText %></div>
+      <div id="btn">
+        <div id="butn">
+          <button type="button" onclick="showPreviousImage()">&lt;</button>
+          <button type="button" onclick="showNextImage()">&gt;</button>
+        </div>
+      </div>
     </div>
   <% } %>
+
   <div class="button-container">
     <button><a href="home/index" target="myframe">피드페이지</a></button>
     <!-- 나중에 경로 수정 -->
