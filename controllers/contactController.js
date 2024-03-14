@@ -36,8 +36,13 @@ const addPostForm = (req, res) => {
 //@desc Post 게시글 업로드
 //@route POST /home 
 const createPost = asyncHandler(async (req, res)=>{
+  const token = req.cookies.token;
+  const decoded= await jwt.verify(token, jwtSecret)
+  preuser=decoded.id;
+  const user =Post.findOne({_id : preuser});
   console.log(req.files);
-  console.log(req.body)
+  console.log(req.body);
+  console.log(preuser);
   // const userid=req.params.id;
   const postImageArray = [];
   for(let i=0; i<req.files.length; i++){
@@ -46,7 +51,7 @@ const createPost = asyncHandler(async (req, res)=>{
   postText = req.body.postText.toString();
   console.log(postText);
   goodNum=0;
-  userid= "songdong_99"
+  userid= user.userid;
   comment=null;
   if(!postImageArray && !postText){
     return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
