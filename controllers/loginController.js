@@ -3,7 +3,7 @@ const { User } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const jwtSecret = process.env.JSW_SECRET;
+const jwtSecret = process.env.JWT_SECRET;
 // console.log("◆◇ ", jwtSecret, " ◇◆");
 
 // @desc Get Login page
@@ -30,7 +30,9 @@ const loginUser = asyncHandler(async (req, res) => {
   // obejct ID 사용해서 JWT 토큰 생성
   const token = jwt.sign({ id: user._id }, jwtSecret);
   res.cookie("token", token, { httpOnly: true });
-  res.redirect(`/home/${username}`);
+  // console.log(user.userid)
+  res.redirect("home");
+  // res.render("index", {user:user.userid});
 });
 
 // @desc Get Login page
@@ -56,6 +58,11 @@ const joinUser = asyncHandler(async (req, res) => {
   }
 })
 
+const logout = (req,res) => {
+  res.clearCookie("token");
+  res.redirect("/")
+}
+
 module.exports = {
-  getLogin, loginUser, getJoin, joinUser,
+  getLogin, loginUser, getJoin, joinUser,logout
 }
