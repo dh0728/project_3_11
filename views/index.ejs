@@ -7,43 +7,24 @@
   <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-  <div id="container"><img src="/src/logo.png"></img>
-  <div id="logout"><a  id="logout_btn" href="/logout">로그아웃</a>
-  </div></div>
+  <div id="container">
+    <img src="/src/logo.png"></img>
+    <div id="logout">
+      <a  id="logout_btn" href="/logout">로그아웃</a>
+    </div>
+  </div>
+  <% for (let i = 0; i <showdb.length; i++) { %>
+    <div id="box">
+      <h2><%= showdb[i].userid %> <button>팔로우</button></h2>
+      <a href="<%= showdb[i].postImage %>" id="heart_image"></a>
+      <div id="text_container"><a href="">좋아요 링크</a> <%= showdb[i].postText %></div>
+    </div>
+  <% } %>
   <div class="button-container">
     <button><a href="home/index" target="myframe">피드페이지</a></button>
     <!-- 나중에 경로 수정 -->
-    <button><a href="home/upload" target="myframe">업로드</a></button>
+    <button><a href="home/upload/" target="myframe">업로드</a></button>
     <button><a href="/mypage" target="myframe">마이페이지</a></button>
   </div>
-  <script>
-    // 반복할 횟수 (데이터베이스 정보 가져와야함)
-    const repeatCount = 5;
-
-    // 반복해서 생성할 내용을 변수에 저장
-    const content = `
-      <div id="box">
-        <h2>${getId()} <button>팔로우</button></h2>
-        <a href="#" id="heart_image">이미지 링크</a>
-        <div id="text_container"><a href="">좋아요 링크</a> ${getDatabaseText()} </div>
-      </div>
-    `;
-
-    function getId(){
-    // 데베에서 아이디 불러와야댐
-      return "데이터베이스에서 가져온 아이디"
-    }
-
-    // 데베에서 텍스트 가져와야댐
-    function getDatabaseText() {
-      // 여기에 데이터베이스에서 텍스트를 가져오는 로직을 구현해야함
-      return "데이터베이스에서 가져온 텍스트 내용";
-    }
-    // 내용 반복해서 출력
-    const container = document.getElementById("container");
-    for (let i = 0; i < repeatCount; i++) {
-      container.innerHTML += content;
-    }
-  </script>
 </body>
 </html>

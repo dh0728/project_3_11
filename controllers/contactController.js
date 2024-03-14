@@ -4,9 +4,13 @@ const {User}= require("../models/userModel");
 
 //@desc Get 피트화면 
 //@route Get /home 
-const getHome= (req, res) => {
-  res.render("index")
-} 
+const getHome=asyncHandler(async (req, res) => {
+  // console.log(req);
+  let showdb = await Post.find()
+  // console.log(showdb[2].userid)
+  res.render('index',{showdb : showdb});
+  // res.render("index")
+}) 
 
 //@desc Get 프로필 정보 확인
 //@route Get /home 
@@ -20,10 +24,6 @@ const getPost = asyncHandler(async (req,res)=>{
 const addPostForm = (req, res) => {
   res.render("upload")
 } 
-const addPostTextForm = (req, res) => {
-  res.render("uploadText")
-} 
-
 //@desc Post 게시글 업로드
 //@route POST /home 
 const createPost = asyncHandler(async (req, res)=>{
@@ -37,7 +37,7 @@ const createPost = asyncHandler(async (req, res)=>{
   postText = req.body.postText.toString();
   console.log(postText);
   goodNum=0;
-  userid= "c"
+  userid= "songdong_99"
   comment=null;
   if(!postImageArray && !postText){
     return res.status(400).send("게시할 이미지나 글중 하나는 필수야.")
@@ -49,7 +49,8 @@ const createPost = asyncHandler(async (req, res)=>{
     goodNum,
     comment,
   });
-  res.status(200).send("Contacts page")
+  res.redirect('http://localhost:3000/home');
+  // res.status(200).send(`삽입완료`)
 })
 
 // const storage= multer.diskStorage({
@@ -147,4 +148,4 @@ const deletPost= asyncHandler(async(req,res)=>{
   res.status(200).send(`delete: ${req.params.id}`)
 });
 
-module.exports = {getPost, createPost, updateContact,deletPost,addPostForm,addPostTextForm, getHome};
+module.exports = {getPost, createPost, updateContact,deletPost,addPostForm, getHome};

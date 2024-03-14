@@ -30,7 +30,9 @@ const loginUser = asyncHandler(async (req, res) => {
   // obejct ID 사용해서 JWT 토큰 생성
   const token = jwt.sign({ id: user._id }, jwtSecret);
   res.cookie("token", token, { httpOnly: true });
-  res.redirect(`/home`);
+  // console.log(user.userid)
+  res.redirect("home");
+  // res.render("index", {user:user.userid});
 });
 
 // @desc Get Login page

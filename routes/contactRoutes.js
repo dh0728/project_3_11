@@ -3,7 +3,7 @@ const router =express.Router();
 
 const path = require('path')
 const multer = require('multer')
-
+const uuid4 = require('uuid4');
 //로그인 확인
 const cookieParser = require("cookie-parser");
 const checkLogin = require("../middlewares/checkLogin")
@@ -26,7 +26,6 @@ const upload = multer({
     }
   })
 });
-
 router
   .route("/")
   .get(checkLogin,getHome)
