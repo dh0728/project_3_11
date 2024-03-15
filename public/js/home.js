@@ -1,1 +1,0 @@
-const urlParams = request.getParameter("")
