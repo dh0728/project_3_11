@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { User } = require("../models/userModel");
+const { User, Follower } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -51,6 +51,8 @@ const joinUser = asyncHandler(async (req, res) => {
     // 비밀번호 암호화
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ userid: user_id, name: name, email: email, password: hashedPassword})
+    // console.log(user._id)
+    const follow = await Follower.create({ userobj:user._id, userid: user.userid, followingId: [], followerId: [] })
     // res.status(201).json({ message: "Register success", user: user});
     res.redirect("/");
   } else {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="container">
     <img src="/src/logo.png" alt="로고">
@@ -21,12 +23,19 @@
     </div>
   </div>
 
-  <% for (let i = 0; i <showdb.length; i++) { %>
+  <% for (let i=0; i <showdb.length; i++) { %>
     <div id="box">
-      <h2><%= showdb[i].userid %> <button>팔로우</button></h2>
+      <h2>
+        <%= showdb[i].userid %>
+          <form action="/home?_method=PUT" method="POST">
+            <button class="btn_follow" name="following" value="<%= showdb[i].userid %>">팔로우</button>
+          </form>
+      </h2>
       <img src="/src/heart1.jpg">
       <img src="/image/<%=showdb[i].postImage %>">
-      <div id="text_container"><%= showdb[i].postText %></div>
+      <div id="text_container">
+        <%= showdb[i].postText %>
+      </div>
       <div id="btn">
         <div id="butn">
           <button type="button" onclick="showPreviousImage()">&lt;</button>
@@ -34,12 +43,13 @@
         </div>
       </div>
     </div>
-  <% } %>
+    <% } %>
 
-  <div class="button-container">
-    <button><a href="http://localhost:3000/home/" target="myframe">피드페이지</a></button>
-    <button><a href="http://localhost:3000/home/upload" target="myframe">업로드</a></button>
-    <button><a href="http://localhost:3000/home/mypage" target="myframe">마이페이지</a></button>
-  </div>
+      <div class="button-container">
+        <button><a href="http://localhost:3000/home/" target="myframe">피드페이지</a></button>
+        <button><a href="http://localhost:3000/home/upload" target="myframe">업로드</a></button>
+        <button><a href="http://localhost:3000/home/mypage" target="myframe">마이페이지</a></button>
+      </div>
 </body>
+
 </html>
