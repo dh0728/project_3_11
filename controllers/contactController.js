@@ -1,8 +1,9 @@
 const asyncHandler = require("express-async-handler");
 const {Post}= require("../models/contactModel");
-const {User}= require("../models/userModel");
+const {User, Follower}= require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
+console.log(`◇◆${jwtSecret}◆◇`)
 
 //@desc Get 피트화면 
 //@route Get /home 
@@ -29,15 +30,17 @@ const addPostForm = (req, res) => {
 const getMypage =asyncHandler(async (req, res) => {
   // 현재사용자 _id값 가져오기
   const token = req.cookies.token;
-  const decoded= await jwt.verify(token, jwtSecret)
+  const decoded= jwt.verify(token, jwtSecret)
   preuser=decoded.id.toString()
   const user =await User.findById(preuser);
   //console.log(user.userid)
   
   // post 정보 mypage.ejs로 넘기기
   const showdb = await Post.find({userid:user.userid})
-  //console.log(showdb)
-  res.render('mypage',{showdb : showdb});
+  const showfollow = await Follower.findOne({userid:user.userid})
+  console.log(showdb)
+  console.log(showfollow)
+  res.render('mypage',{showdb : showdb, showfollow: showfollow});
 }) 
 
 //@desc Post 게시글 업로드
@@ -127,4 +130,24 @@ const deletPost= asyncHandler(async(req,res)=>{
   res.status(200).send(`delete: ${req.params.id}`)
 });
 
-module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage,updateGet,updatePost};
+//@desc update follow
+//@route PUT /home
+const updateFollower = asyncHandler(async (req, res) => {
+  const token = req.cookies.token;
+  const decoded = jwt.verify(token, jwtSecret);
+  const me_id = decoded.id;
+  const following_id = req.body.following;
+  // console.log(">>",me_id);
+  // console.log(req.body.following);
+  // 내 팔로잉에 추가
+  const me = await Follower.findOne({userobj : me_id})
+  if (me.followingId.includes(following_id) || me_id === following_id){
+    console.log("already following")
+    return res.redirect("/home")
+  }
+  await Follower.findOneAndUpdate({userobj : me_id}, {$push:{followingId: following_id}});
+  // 나를 팔로워에 추가
+  const following = await Follower.findOneAndUpdate({userid: following_id}, {$push:{followerId: me.userid}});
+})
+
+module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage, updateGet,updatePost,updateFollower};

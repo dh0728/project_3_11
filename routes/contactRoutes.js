@@ -8,7 +8,8 @@ const uuid4 = require('uuid4');
 const cookieParser = require("cookie-parser");
 const checkLogin = require("../middlewares/checkLogin")
 
-const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage,updateGet,updatePost} = require("../controllers/contactController")
+const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage,updateGet,updatePost, updateFollower} = require("../controllers/contactController");
+const { Follower } = require('../models/userModel');
 
 router.use(cookieParser());
 
@@ -29,6 +30,7 @@ const upload = multer({
 router
   .route("/")
   .get(checkLogin,getHome)
+  .put(checkLogin,updateFollower)
 router
   .route("/upload")
   .get(checkLogin,addPostForm)
@@ -42,7 +44,6 @@ router
   .get(checkLogin,updateGet)
   .put(checkLogin,upload.array('postImage'),updatePost)  
 module.exports =router;
-
 
 
 // const storage= multer.diskStorage({

@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema({
 });
 
 const followerSchema = new mongoose.Schema({
+  userobj: {
+    type:String,
+    required: true,
+    unique: true,
+  },
   userid: {
     type:String,
     required: true,
