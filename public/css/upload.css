@@ -98,7 +98,8 @@ button:hover {
     font-size: 15px;
     padding: auto;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 #upload:hover {
