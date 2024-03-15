@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 console.log(`◇◆${jwtSecret}◆◇`)
 
-//@desc Get 피트화면 
+//@desc Get 피트?화면 
 //@route Get /home 
 const getHome=asyncHandler(async (req, res) => {
   // console.log(req);
@@ -27,6 +27,9 @@ const getHome=asyncHandler(async (req, res) => {
 const addPostForm = (req, res) => {
   res.render("upload")
 } 
+
+//@desc Get 마이페이지 화면 
+//@route Get /home/mypage
 const getMypage =asyncHandler(async (req, res) => {
   // 현재사용자 _id값 가져오기
   const token = req.cookies.token;
@@ -109,18 +112,29 @@ const updateFollower = asyncHandler(async (req, res) => {
   const token = req.cookies.token;
   const decoded = jwt.verify(token, jwtSecret);
   const me_id = decoded.id;
-  const following_id = req.body.following;
-  // console.log(">>",me_id);
-  // console.log(req.body.following);
-  // 내 팔로잉에 추가
-  const me = await Follower.findOne({userobj : me_id})
-  if (me.followingId.includes(following_id) || me_id === following_id){
-    console.log("already following")
-    return res.redirect("/home")
+  const post_id = req.body.following;
+  const following_id = await Post.findOne({_id: post_id}).userid
+  // 본인은 팔로우할 수 없어요~
+  const me = Follower.findOne({userobj: me_id})
+  if (me.userid === following_id){
+    return res.redirect(`/home#${post_id}`)
   }
-  await Follower.findOneAndUpdate({userobj : me_id}, {$push:{followingId: following_id}});
-  // 나를 팔로워에 추가
-  const following = await Follower.findOneAndUpdate({userid: following_id}, {$push:{followerId: me.userid}});
+  // 내 팔로잉에 추가 (addToSet: 배열에 중복없이)
+  await Follower.findOneAndUpdate({userobj: me_id}, {$addToSet:{followingId: following_id}});
+  // 나를 팔로워에 추가 (addToSet: 배열에 중복없이)
+  await Follower.findOneAndUpdate({userid: following_id}, {$addToSet:{followerId: me.userid}});
+  return res.redirect(`/home#${post_id}`)
 })
 
-module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage, updateFollower};
+const updateGood = asyncHandler(async (req, res) => {
+  const token = req.cookies.token;
+  const decoded = jwt.verify(token, jwtSecret);
+  const me_id = decoded.id;
+  const post_id = req.body.postname;
+  // 좋아요에 추가
+  const user = await User.findOne({_id:me_id})
+  const post = await Post.findOneAndUpdate({_id : post_id}, {$addToSet:{goodList: user.userid}});
+  return res.redirect(`/home#${post_id}`)
+})
+
+module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage, updateFollower, updateGood};

@@ -8,7 +8,7 @@ const uuid4 = require('uuid4');
 const cookieParser = require("cookie-parser");
 const checkLogin = require("../middlewares/checkLogin")
 
-const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage, updateFollower} = require("../controllers/contactController");
+const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage, updateFollower, updateGood} = require("../controllers/contactController");
 const { Follower } = require('../models/userModel');
 
 router.use(cookieParser());
@@ -31,6 +31,9 @@ router
   .route("/")
   .get(checkLogin,getHome)
   .put(checkLogin,updateFollower)
+router
+  .route("/good")
+  .put(checkLogin,updateGood)
 router
   .route("/upload")
   .get(checkLogin,addPostForm)
