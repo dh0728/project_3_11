@@ -39,15 +39,15 @@
           <div>
             <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" class="postImg" postText="<%=showdb[i].postText %>">
           </div>
-          <div id="modal" class="modal">
+          <div id="modal<%= i %>" class="modal">
             <span class="close">&times;</span>
-            <img class="modalImage" id="modalImage">
-            <div id="modalText" class="text">
+            <img id="modalImage<%= i %>" class="modalImage" >
+            <div id="modalText<%= i %>" class="text modalText">
               <%=showdb[i].postText %>
             </div>
             <div class="modalButtons">
-              <button id="editButton" onclick="location.href='/upload'">수정하기</button>
-              <button id="deleteButton" onclick="">삭제하기</button>
+              <button id="editButton<%= i %>" onclick="location.href='/upload'">수정하기</button>
+              <button id="deleteButton<%= i %>" onclick="">삭제하기</button>
             </div>
           </div>
           <% } %>
