@@ -103,7 +103,7 @@
 }
 
 /* 모달창 내 이미지 */
-.modalImage {
+#modalImage {
   display: block;
   width: 400px;
   height: 400px;

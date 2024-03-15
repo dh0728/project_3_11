@@ -6,13 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/css/index.css">
-  <style>
-    /* 하트 이미지 크기 줄이기 */
-    #box img[src='/src/heart1.jpg'] {
-      width: 30px;
-      height: auto;
-    }
-  </style>
+  <script src="https://kit.fontawesome.com/fccb424d55.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,14 +18,22 @@
   </div>
 
   <% for (let i=0; i <showdb.length; i++) { %>
-    <div id="box">
+    <div class="box" id="<%= showdb[i]._id %>">
       <h2>
         <%= showdb[i].userid %>
-          <form action="/home?_method=PUT" method="POST">
-            <button class="btn_follow" name="following" value="<%= showdb[i].userid %>">팔로우</button>
+          <form id="<%= showdb[i].userid %>" action="/home?_method=PUT" method="POST">
+            <button class="btn_follow" onclick="followed()" name="following" value="<%= showdb[i]._id %>">팔로우</button>
+            <!-- followed() : 팔로우 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
           </form>
       </h2>
-      <img src="/src/heart1.jpg">
+      <form action="/home/good?_method=PUT" method="POST">
+        <button class="btn_good" onclick="liked()" name="postname" value="<%= showdb[i]._id %>">
+          <!-- liked() : 좋아요 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
+          <i class="fa-regular fa-heart">
+            <%= showdb[i].goodList.length %>
+          </i>
+        </button>
+      </form>
       <img src="/image/<%=showdb[i].postImage %>">
       <div id="text_container">
         <%= showdb[i].postText %>
@@ -50,6 +52,10 @@
         <button><a href="http://localhost:3000/home/upload" target="myframe">업로드</a></button>
         <button><a href="http://localhost:3000/home/mypage" target="myframe">마이페이지</a></button>
       </div>
+      <script src="/js/home.js">
+        // liked()
+        // followed()
+        // 가능하면...
+      </script>
 </body>
-
 </html>

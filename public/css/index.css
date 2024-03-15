@@ -51,7 +51,7 @@ div {
   height: 1%;
 }
 
-#box{
+.box{
   border: 1px solid black;
   border-radius: 20px;
   padding: 30px;
