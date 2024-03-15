@@ -103,7 +103,7 @@
 }
 
 /* 모달창 내 이미지 */
-#modalImage {
+.modalImage {
   display: block;
   width: 400px;
   height: 400px;
@@ -164,8 +164,6 @@
   background-color: hsl(297, 53%, 50%);
 }
 
-
-/* 메뉴버튼 추가하고 추가한 css */
 button {
   padding: 8px 16px;
   background-color: dodgerblue;

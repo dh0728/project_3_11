@@ -41,8 +41,8 @@ const getMypage =asyncHandler(async (req, res) => {
   // post 정보 mypage.ejs로 넘기기
   const showdb = await Post.find({userid:user.userid})
   const showfollow = await Follower.findOne({userid:user.userid})
-  console.log(showdb)
-  console.log(showfollow)
+  //console.log(showdb)
+  //console.log(showfollow)
   res.render('mypage',{showdb : showdb, showfollow: showfollow});
 }) 
 
@@ -63,7 +63,7 @@ const createPost = asyncHandler(async (req, res)=>{
     postImageArray.push(req.files[i].filename)
   }
   postText = req.body.postText.toString();
-  console.log(postText);
+ // console.log(postText);
   goodNum=0;
   comment=null;
   if(!postImageArray && !postText){
@@ -80,7 +80,7 @@ const createPost = asyncHandler(async (req, res)=>{
   // res.status(200).send(`삽입완료`)
 })
 const updateGet = asyncHandler(async (req, res, id) => {
-  console.log(req.params.id)
+  //console.log(req.params.id)
   const post= await Post.findById(req.params.id)
   res.render("update" ,{post:post})
 })
@@ -90,9 +90,9 @@ const updatePost = asyncHandler(async (req, res) => {
     postImageArray.push(req.files[i].filename)
   }
   postText = req.body.postText.toString();
-  console.log(postImageArray);
-  console.log(postText);
-  console.log(req.params.id)
+  //console.log(postImageArray);
+  //console.log(postText);
+  //console.log(req.params.id)
   const beforePost = await Post.findById(req.params.id)
   console.log(beforePost.userid)
   const post = await Post.findByIdAndUpdate(req.params.id,{
@@ -102,8 +102,13 @@ const updatePost = asyncHandler(async (req, res) => {
     goodNum:beforePost.goodNum,
     comment:beforePost.comment,
   },{ new: true })
+  const token = req.cookies.token;
+  const decoded= jwt.verify(token, jwtSecret)
+  preuser=decoded.id.toString()
+  const user =await User.findById(preuser);
   const showdb = await Post.find({userid:beforePost.userid})
-  res.render('mypage',{showdb :showdb });
+  const showfollow = await Follower.findOne({userid:user.userid})
+  res.render('mypage',{showdb : showdb, showfollow: showfollow});
 }) 
 
 //@desc Update 게시글 

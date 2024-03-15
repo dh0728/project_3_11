@@ -37,33 +37,55 @@
         <!-- 임시데이터 -->
         <% for (let i=0; i <showdb.length; i++) { %>
           <div>
-            <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" class="postImg" postText="<%=showdb[i].postText %>">
+            <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" id="postImg" class="postImg" postText="<%=showdb[i].postText %>">
           </div>
-          <div id="modal<%=showdb[i]._id %>" class="modal">
+          <div id="modal<%= i %>" class="modal">
             <span class="close">&times;</span>
-            <img id="modalImage<%= i %>" class="modalImage" >
-            <div id="modalText<%= i %>" class="text modalText">
+            <img id="modalImage<%= i %>" class="modalImage" src="/image/<%=showdb[i].postImage %>" >
+            <div id="modalText<%= i %>" class="text modalText" postText="<%=showdb[i].postText %>">
             </div>
             <div class="modalButtons">
-              <button id="editButton<%= i %>" onclick="location.href='/upload'">수정하기</button>
+              <button id="editButton<%= i %>" onclick="location.href='mypage/update/<%=showdb[i]._id %>'">수정하기</button>
               <button id="deleteButton<%= i %>" onclick="">삭제하기</button>
             </div>
           </div>
-          <% } %>
+
+        <% } %>
       </div>
       <%- include('./include/menu_button.ejs') %>
-        <!-- 모달창 -->
-        <!-- <div id="modal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modalImage" id="modalImage">
-      <div id="modalText" class="text"></div>
-      <div class="modalButtons">
-        <button id="editButton" onclick="location.href='/upload'">수정하기</button>
-        <button id="deleteButton" onclick="" >삭제하기</button>
-      </div>
-    </div> -->
     </div>
     <script src="/js/mypage.js"></script>
+    <!-- <script>
+// 클릭
+var container = document.getElementsByClassName("container");
+var images = document.querySelectorAll(`#myPosts .postImg`);
+console.log(">>",images)
+images.forEach((img,index) => {
+  var modal = document.querySelector(`#modal${index}`);
+  var modalImg = document.querySelector(`#modalImage${index}`);
+  var modalText = document.querySelector(`#modalText${index}`);
+  img.onclick = function () {
+    modal.style.border = "3px solid black";
+    modal.style.display = "block";
+    // modalImg.src = this.src;
+    modalText.innerHTML = this.getAttribute("postText");
+  };
+
+});
+//닫기
+var span = document.querySelector(".close");
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+var deleteButton = document.getElementById("deleteButton");
+
+deleteButton.onclick = function () {
+  if (confirm("정말 삭제하시겠습니까?")) {
+    alert("삭제되었습니다.");
+  }
+};
+    </script> -->
 </body>
 
 </html>
