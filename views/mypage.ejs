@@ -37,7 +37,7 @@
         <!-- 임시데이터 -->
         <% for (let i=0; i <showdb.length; i++) { %>
           <div>
-            <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" class="postImg">
+            <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" class="postImg" postText="<%=showdb[i].postText %>">
           </div>
           <div id="modal" class="modal">
             <span class="close">&times;</span>
