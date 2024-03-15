@@ -32,10 +32,11 @@ const getMypage =asyncHandler(async (req, res) => {
   const decoded= await jwt.verify(token, jwtSecret)
   preuser=decoded.id.toString()
   const user =await User.findById(preuser);
-  console.log(user.userid)
+  //console.log(user.userid)
+  
   // post 정보 mypage.ejs로 넘기기
   const showdb = await Post.find({userid:user.userid})
-  console.log(showdb)
+  //console.log(showdb)
   res.render('mypage',{showdb : showdb});
 }) 
 
@@ -72,7 +73,32 @@ const createPost = asyncHandler(async (req, res)=>{
   res.redirect('http://localhost:3000/home');
   // res.status(200).send(`삽입완료`)
 })
-
+const updateGet = asyncHandler(async (req, res, id) => {
+  console.log(req.params.id)
+  const post= await Post.findById(req.params.id)
+  res.render("update" ,{post:post})
+})
+const updatePost = asyncHandler(async (req, res) => {
+  const postImageArray = [];
+  for(let i=0; i<req.files.length; i++){
+    postImageArray.push(req.files[i].filename)
+  }
+  postText = req.body.postText.toString();
+  console.log(postImageArray);
+  console.log(postText);
+  console.log(req.params.id)
+  const beforePost = await Post.findById(req.params.id)
+  console.log(beforePost.userid)
+  const post = await Post.findByIdAndUpdate(req.params.id,{
+    userid:beforePost.userid,
+    postImage: postImageArray,
+    postText:postText,
+    goodNum:beforePost.goodNum,
+    comment:beforePost.comment,
+  },{ new: true })
+  const showdb = await Post.find({userid:beforePost.userid})
+  res.render('mypage',{showdb :showdb });
+}) 
 
 //@desc Update 게시글 
 //@route Put /home/:id 
@@ -95,9 +121,10 @@ const updateContact = asyncHandler (async (req,res)=>{
 //@route delete /home/:id
 const deletPost= asyncHandler(async(req,res)=>{
   const username= req.params.id;
+
   const post = await Post.deleteOne({userid : username});
   
   res.status(200).send(`delete: ${req.params.id}`)
 });
 
-module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage};
+module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage,updateGet,updatePost};

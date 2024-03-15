@@ -164,6 +164,8 @@
   background-color: hsl(297, 53%, 50%);
 }
 
+
+/* 메뉴버튼 추가하고 추가한 css */
 button {
   padding: 8px 16px;
   background-color: dodgerblue;

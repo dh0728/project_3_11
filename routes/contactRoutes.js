@@ -8,7 +8,7 @@ const uuid4 = require('uuid4');
 const cookieParser = require("cookie-parser");
 const checkLogin = require("../middlewares/checkLogin")
 
-const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage} = require("../controllers/contactController")
+const {createPost,updateContact,deletPost,addPostForm ,getHome, getMypage,updateGet,updatePost} = require("../controllers/contactController")
 
 router.use(cookieParser());
 
@@ -36,6 +36,11 @@ router
 router
   .route("/mypage")
   .get(checkLogin,getMypage)
+
+router
+  .route("/mypage/update/:id")
+  .get(checkLogin,updateGet)
+  .put(checkLogin,upload.array('postImage'),updatePost)  
 module.exports =router;
 
 

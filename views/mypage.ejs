@@ -29,10 +29,10 @@
       <div id="modal" class="modal">
         <span class="close">&times;</span>
         <img class="modalImage" id="modalImage">
-        <div id="modalText" class="text"><%=showdb[i].postText %></div>
+        <div id="modalText" class="text"></div>
         <div class="modalButtons">
-          <button id="editButton" onclick="location.href='/upload'">수정하기</button>
-          <button id="deleteButton" onclick="" >삭제하기</button>
+          <button id="editButton" onclick="location.href='/home/mypage/update/<%= showdb[i]._id  %>'">수정하기</button>
+          <button id="deleteButton" onclick="location.href=''" >삭제하기</button>
         </div>
       </div>
       <% } %>
