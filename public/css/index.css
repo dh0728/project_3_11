@@ -83,8 +83,8 @@ div {
   border: 1px solid black;
   border-radius: 20px;
   padding: 30px;
-  padding-top: 15px;
-  padding-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 73px;
   margin: 20px;
   width: 600px;
   height: 700px;
@@ -122,7 +122,7 @@ div {
 }
 
 #text_container {
-  border: 2px solid lightblue;
+  border: 2px solid rgb(83, 199, 128);
   width: 450px;
   height: 150px;
   margin: auto;
