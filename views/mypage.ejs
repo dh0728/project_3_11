@@ -9,28 +9,35 @@
 </head>
 
 <body>
-  <div id="container" class="container">
-    <img src="/src/logo.png" alt="logo" class="logo">
+  <div id="container">
+    <img src="/src/logo.png" alt="로고">
+    <div id="name">FOLLOW ME</div>
+    <div id="logout">
+      <a id="logout_btn" href="/logout">로그아웃</a>
+    </div>
+  </div>
     <div class="profile">
       <div class="profileImage">
         <img src="/src/profile.png" alt="profileimg">
       </div>
-      <div class="post">
-        <div>게시물</div>
-        <div>
-          <%=showdb.length %>
+      <div class="profileInfo">
+        <div class="post">
+          <div>게시물</div>
+          <div>
+            <%=showdb.length %>
+          </div>
         </div>
-      </div>
-      <div class="followers">
-        <div>팔로워</div>
-        <div>
-          <%=showfollow.followerId.length %>
+        <div class="followers">
+          <div>팔로워</div>
+          <div>
+            <%=showfollow.followerId.length %>
+          </div>
         </div>
-      </div>
-      <div class="followings">
-        <div>팔로잉</div>
-        <div>
-          <%=showfollow.followingId.length %>
+        <div class="followings">
+          <div>팔로잉</div>
+          <div>
+            <%=showfollow.followingId.length %>
+          </div>
         </div>
       </div>
     </div>
