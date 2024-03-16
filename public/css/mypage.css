@@ -1,8 +1,45 @@
-.logo {
-  width: 200px;
-  height: 200px;
+#container{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  /* padding: 70px; */
+  border: 1px solid black;
+  border-radius: 30px;
+  width: 90%;
+  height: 10%;
+}
+
+#container img {
+  width: 100px;
+  height: 100px;
+}
+
+#name {
+  font-size: xx-large;
+  margin-top: 32px;
+}
+
+#logout{
+  display: flex;
+  padding: 10px;
+  padding-left: 15px;
+  padding-bottom: 12px;
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 20px;
+  width: 70px;
   margin-top: 30px;
-  margin-left: 50px;
+}
+
+#logout:hover {
+  background-color: rgb(127, 194, 241);
+}
+
+#logout a {
+  color: white;
+  text-decoration: none;
 }
 
 .profile {
@@ -73,17 +110,19 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: auto;
+  padding: auto;
   margin-top: 50px;
   width: 1000px;
   border: 2px solid black;
   border-radius: 10px;
-  gap: 4px;
 }
 
 .postImg {
   width: 300px;
   height: 300px;
   cursor: pointer;
+  border: 1px solid red;
+  margin: 10px;
 }
 
  /* 모달창  */
