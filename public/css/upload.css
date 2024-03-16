@@ -1,3 +1,46 @@
+#header{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 90%;
+    height: 10%;
+    margin: auto;
+    padding: auto;
+}
+
+#header img {
+    width: 100px;
+    height: 100px;
+}
+
+#name {
+    font-size: xx-large;
+    margin-top: 27px;
+}
+
+#logout{
+    display: flex;
+    padding: 10px;
+    padding-left: 15px;
+    padding-bottom: 12px;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 20px;
+    width: 70px;
+    margin-top: 30px;
+}
+
+#logout:hover {
+    background-color: rgb(127, 194, 241);
+}
+
+#logout a {
+    color: white;
+    text-decoration: none;
+}
 
 .addImage {
     margin: auto;
@@ -5,7 +48,7 @@
     margin-top: 30px;
     width: 400px;
     height: 400px;
-    border: 3px solid hsl(297, 53%, 50%);
+    border: 3px solid rgb(83, 199, 128);
     /* border-radius: 20px 20px / 20px 20px; */
     border-radius: 10px;
     overflow: hidden;
@@ -14,6 +57,7 @@
 }
 
 #imageCounter {
+    margin-top: 50px;
     text-align: center;
     font-size: 30px;
 }
@@ -50,16 +94,16 @@ button:hover {
 
 .delete {
     border-radius: 10px;
-    background-color: blueviolet;
+    background-color: dodgerblue;
     color: #fff;
     cursor: pointer;
-    width: 100px;
-    height: 30px;
-    font-size: 15px;
+    width: 110px;
+    height: 37px;
+    font-size: 18px;
 }
 
 .delete:hover {
-    background-color: hsl(297, 53%, 50%);
+    background-color: rgb(127, 194, 241);
     color: #fff;
   }
 
@@ -73,11 +117,12 @@ button:hover {
     margin-top: 20px;
     width: 400px;
     height: 300px;
-    border: 3px solid hsl(297, 53%, 50%);
+    border: 3px solid rgb(83, 199, 128);
     border-radius: 10px;
     overflow: hidden;
     resize: none;
-    outline-color: blueviolet;
+    outline-color: rgb(53, 130, 83);
+    padding: 10px;
 }
 
 .text::placeholder {
@@ -90,12 +135,12 @@ button:hover {
     align-items: center;
     border: none;
     border-radius: 10px;
-    background-color: blueviolet;
+    background-color: dodgerblue;
     color: #fff;
     cursor: pointer;
-    width: 100px;
-    height: 30px;
-    font-size: 15px;
+    width: 170px;
+    height: 50px;
+    font-size: 20px;
     padding: auto;
     margin: auto;
     margin-top: 30px;
@@ -103,6 +148,6 @@ button:hover {
 }
 
 #upload:hover {
-    background-color: hsl(297, 53%, 50%);
+    background-color: rgb(127, 194, 241);
   }
 
