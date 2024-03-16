@@ -121,6 +121,10 @@ div {
   margin-left: 40px;
 }
 
+/* .fa-regular.fa-heart.liked {
+  color: red; 
+} */
+
 #text_container {
   border: 2px solid rgb(83, 199, 128);
   width: 450px;
