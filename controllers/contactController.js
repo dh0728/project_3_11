@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const {Post}= require("../models/contactModel");
 const {User, Follower}= require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const { post } = require("../routes/contactRoutes");
 const jwtSecret = process.env.JWT_SECRET;
 console.log(`◇◆${jwtSecret}◆◇`)
 
@@ -102,15 +103,15 @@ const updatePost = asyncHandler(async (req, res) => {
     goodNum:beforePost.goodNum,
     comment:beforePost.comment,
   },{ new: true })
-  const token = req.cookies.token;
-  const decoded= jwt.verify(token, jwtSecret)
-  preuser=decoded.id.toString()
-  const user =await User.findById(preuser);
-  const showdb = await Post.find({userid:beforePost.userid})
-  const showfollow = await Follower.findOne({userid:user.userid})
-  res.render('mypage',{showdb : showdb, showfollow: showfollow});
-}) 
-
+  // const token = req.cookies.token;
+  // const decoded= jwt.verify(token, jwtSecret)
+  // preuser=decoded.id.toString()
+  // const user =await User.findById(preuser);
+  // const showdb = await Post.find({userid:beforePost.userid})
+  // const showfollow = await Follower.findOne({userid:user.userid})
+  // res.render('mypage',{showdb : showdb, showfollow: showfollow});
+  res.redirect('http://localhost:3000/home/mypage');
+  });
 //@desc Update 게시글 
 //@route Put /home/:id 
 const updateContact = asyncHandler (async (req,res)=>{
@@ -131,11 +132,11 @@ const updateContact = asyncHandler (async (req,res)=>{
 //@desc delete 게시글 
 //@route delete /home/:id
 const deletPost= asyncHandler(async(req,res)=>{
-  const username= req.params.id;
-
-  const post = await Post.deleteOne({userid : username});
-  
-  res.status(200).send(`delete: ${req.params.id}`)
+  const ID=req.body.postID.toString()
+  console.log(ID)
+  console.log(postID)
+  const post = await Post.deleteOne({_id : req.body});
+  res.status(200).send("삭제")
 });
 
 //@desc update follow
