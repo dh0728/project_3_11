@@ -35,7 +35,7 @@ const loginUser = asyncHandler(async (req, res) => {
   // res.render("index", {user:user.userid});
 });
 
-// @desc Get Login page
+// @desc Get Join page
 // @route GET /join
 const getJoin = (req, res) => {
   res.render("join", { ok: true });
