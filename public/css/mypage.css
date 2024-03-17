@@ -148,8 +148,8 @@ body {
 /* 모달창 내 이미지 */
 .modalImage {
   display: block;
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   padding: auto;
   margin: auto;
   margin-top: 50px;

@@ -11,16 +11,15 @@ console.log(`◇◆${jwtSecret}◆◇`)
 const getHome=asyncHandler(async (req, res) => {
   // console.log(req);
   const token = req.cookies.token;
-  jwt.verify(token, jwtSecret, (err, decoded) => {
-    if (err) {
-      console.error('JWT verification failed:', err);
-      return;
-    }
-    console.log(decoded.id)
-  })
+  const decoded = jwt.verify(token, jwtSecret);
+  const user = await User.findOne({_id: decoded.id})
+  const id = user.userid
   let showdb = await Post.find()
+  const follower = await Follower.findOne({userobj: decoded.id})
+  const followList = follower.followingId
+  // console.log(followList)///
   //console.log(showdb[0].postImage)
-  res.render('index',{showdb : showdb});
+  res.render('index',{showdb : showdb, following: followList, id: id});
   // res.render("index")
 }) 
 

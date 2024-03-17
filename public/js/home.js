@@ -10,7 +10,7 @@ carousels.forEach((carousel,index) => {
   const nextEvent = () => {
 
     if (current !== CAROUSEL_LENGTH) {
-      carousel.style.transform = `translateX(${(current + 1) * -350}px)`;
+      carousel.style.transform = `translateX(${(current + 1) * -400}px)`;
       current++;
     } else {
       current = 0;
@@ -21,10 +21,10 @@ carousels.forEach((carousel,index) => {
   const prevEvent = () => {
     if (current !== 0) {
       current--;
-      carousel.style.transform = `translateX(${current * -350}px)`;
+      carousel.style.transform = `translateX(${current * -400}px)`;
     } else {
       current = CAROUSEL_LENGTH;
-      carousel.style.transform = `translateX(${CAROUSEL_LENGTH * -350}px)`;
+      carousel.style.transform = `translateX(${CAROUSEL_LENGTH * -400}px)`;
     }
   };
   nextButton.addEventListener("click", nextEvent);
