@@ -12,38 +12,49 @@
 <body>
   <div id="container">
     <img src="/src/logo.png" alt="로고">
+    <div id="name">FOLLOW ME</div>
     <div id="logout">
       <a id="logout_btn" href="/logout">로그아웃</a>
     </div>
   </div>
 
-  <% for (let i=0; i <showdb.length; i++) { %>
-    <div class="box" id="<%= showdb[i]._id %>">
-      <h2>
-        <%= showdb[i].userid %>
-          <form id="<%= showdb[i].userid %>" action="/home?_method=PUT" method="POST">
-            <button class="btn_follow" onclick="followed()" name="following" value="<%= showdb[i]._id %>">팔로우</button>
-            <!-- followed() : 팔로우 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
-          </form>
-      </h2>
-      <form action="/home/good?_method=PUT" method="POST">
-        <button class="btn_good" onclick="liked()" name="postname" value="<%= showdb[i]._id %>">
-          <!-- liked() : 좋아요 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
-          <i class="fa-regular fa-heart">
-            <%= showdb[i].goodList.length %>
-          </i>
-        </button>
-      </form>
-      <img src="/image/<%=showdb[i].postImage %>">
+    <% for (let i=0; i <showdb.length; i++) { %>
+      <div class="post" id="<%= showdb[i]._id %>">
+        <h2>
+          <div class="postIdFollow">
+            <div class="userid"><%= showdb[i].userid %></div>
+              <form id="<%= showdb[i].userid %>" action="/home?_method=PUT" method="POST">
+                <button class="btn_follow" onclick="followed()" name="following" value="<%= showdb[i]._id %>">팔로우</button>
+                <!-- followed() : 팔로우 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
+              </form>
+          </div>
+        </h2>
+
+        <hr>
+      <div class="postImage"><img src="/image/<%=showdb[i].postImage %>"></div>
+
+      <div class="postHeart">
+        <form action="/home/good?_method=PUT" method="POST">
+          <button class="btn_good" onclick="liked()" name="postname" value="<%= showdb[i]._id %>">
+            <!-- liked() : 좋아요 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
+            <i class="fa-regular fa-heart">
+              <%= showdb[i].goodList.length %>
+            </i>
+          </button>
+        </form>
+      </div>
+
       <div id="text_container">
         <%= showdb[i].postText %>
       </div>
-      <div id="btn">
+
+      
+      <!-- <div id="btn">
         <div id="butn">
           <button type="button" onclick="showPreviousImage()">&lt;</button>
           <button type="button" onclick="showNextImage()">&gt;</button>
         </div>
-      </div>
+      </div> -->
     </div>
     <% } %>
 
@@ -52,10 +63,11 @@
         <button><a href="http://localhost:3000/home/upload" target="myframe">업로드</a></button>
         <button><a href="http://localhost:3000/home/mypage" target="myframe">마이페이지</a></button>
       </div>
-      <script src="/js/home.js">
+      <script src="/js/home.js" defer>
         // liked()
         // followed()
         // 가능하면...
       </script>
+      
 </body>
 </html>

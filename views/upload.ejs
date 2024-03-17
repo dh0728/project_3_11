@@ -9,7 +9,15 @@
 
 <body>
   <div id="container">
-    <div><img src="/src/logo.png" width="150" alt="logo"></div>
+
+    <div id="header">
+    <img src="/src/logo.png" alt="로고">
+    <div id="name">FOLLOW ME</div>
+    <div id="logout">
+      <a id="logout_btn" href="/logout">로그아웃</a>
+    </div>
+  </div>
+
     <div id="add">
       <form action="/home/upload" class="inputImg" method="POST" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
         <div id="imageCounter">0 / 0</div>
