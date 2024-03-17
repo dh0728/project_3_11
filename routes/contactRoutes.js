@@ -42,7 +42,7 @@ router
 router
   .route("/mypage")
   .get(checkLogin,getMypage)
-  .delete(checkLogin,deletPost)
+  .post(checkLogin,deletPost)
 // router
 //   .route("mypage/:id")
 //   .delete(checkLogin,deletPost)

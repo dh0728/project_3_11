@@ -132,10 +132,10 @@ const updateContact = asyncHandler (async (req,res)=>{
 //@desc delete 게시글 
 //@route delete /home/:id
 const deletPost= asyncHandler(async(req,res)=>{
-  const ID=req.body.postID.toString()
+  const ID=req.body.postID
   console.log(ID)
-  console.log(postID)
-  const post = await Post.deleteOne({_id : req.body});
+  // console.log(postID)
+  const post = await Post.deleteOne({ _id : ID});
   res.status(200).send("삭제")
 });
 

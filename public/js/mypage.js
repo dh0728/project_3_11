@@ -24,9 +24,9 @@ images.forEach((img,index) => {
       var button= this;
       if (confirm("정말 삭제하시겠습니까?")) {
         fetch(`http://localhost:3000/home/mypage`, {
-          method: 'DELETE',
+          method: 'POST',
           headers:{
-            Authorization:localStorage.getItem('access_token'),
+            "Content-Type": "application/json",
           },
           body:JSON.stringify({
             postID:button.dataset.id
