@@ -5,6 +5,9 @@
 // mypage js는 하고 계신 거 같아서 괜히 충돌날까봐 안 건드렸구여 css만 하고 있어요
 // 사실 제가 할 건 없긴 하죠 너무 버스 승객인 거 같아 눈치가 보이지만.. 죄송하고 또 감사합니다
 // 열심히할게요 좋은 주말 보내세여 -다현
+// 아닙니다 충분히 열심히 잘해주고 있어요. 빈말이 아닙니다. 저 눈치 준적 없어요...죄송해하지마세요.. 너무 충분하게 
+// 잘하고 계십니다...로고도 너무 예쁩니다. 저도 프사하고 싶네요.ㅋㅋㅋ  
+// 저도 감사합니다. 이렇게 잘 만들어주셔서요ㅠㅠ진심입니다. 일단 하고 병합했는데 달라진거 있는지 확인해보시고 말해주세용-동현 
 // var container = document.getElementsByClassName("container");
 var images = document.querySelectorAll(`#myPosts .postImg`);
 console.log(">>",images)
@@ -52,7 +55,6 @@ images.forEach((img,index) => {
         })
       }
     };
- 
 });
 
 //예전꺼
