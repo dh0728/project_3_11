@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -6,13 +10,15 @@ body {
   display: flex;
   justify-content: center; /*가로 정렬*/
   align-items: center; /*세로 정렬*/
-  height: 100vh;
 }
 
 .container {
+  width: 500px;
+  padding: 70px;
+  margin: 50px auto;
   background-color: #fff;
-  padding: 100px;
   border-radius: 30px;
+  border: 2px solid black;
   text-align: center;
 }
 
@@ -23,6 +29,7 @@ body {
 label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input[type="text"],
@@ -31,19 +38,19 @@ input[type="password"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 30px;
+  border-radius: 10px;
   box-sizing: border-box;
 }
 
 button {
-  background-color: blueviolet;
+  padding: 10px;
+  border: 2px solid black ;
+  border-radius: 10px;
+  background-color: #8FB996;
   color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 30px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: hsl(297, 53%, 50%);
+  background-color: #415D43;
 }

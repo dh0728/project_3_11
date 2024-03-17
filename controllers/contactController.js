@@ -158,7 +158,8 @@ const updateFollower = asyncHandler(async (req, res) => {
   return res.redirect(`/home#${post_id}`)
 })
 
-
+//@desc update good
+//@route PUT /home/good
 const updateGood = asyncHandler(async (req, res) => {
   const token = req.cookies.token;
   const decoded = jwt.verify(token, jwtSecret);
