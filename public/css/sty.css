@@ -1,3 +1,4 @@
+/* styles.css */
 * {
   box-sizing: border-box;
 }
@@ -9,7 +10,7 @@ body {
   align-items: center;
   font-family: Arial, sans-serif;
   margin: 0;
-  padding-bottom: 80px;
+  padding-bottom: 62px;
 }
 
 /* top header */
@@ -34,6 +35,10 @@ button:hover {
 a {
   text-decoration: none;
   color: black;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 div {
@@ -73,78 +78,47 @@ img{
   background-color: #B4A296;
 }
 
-
-#container img {
-  width: 100px;
-  height: 100px;
+#logout a {
+  color: black;
+  text-decoration: none;
 }
 
-#name {
-  font-size: xx-large;
-  margin-top: 32px;
-}
-
-/* post */
-.post {
+/* index.css */
+.box{
   display: flex;
   flex-direction: column;
   width: 60%;
-
   border: 2px solid black;
   box-shadow: 5px 5px 5px #ccc;
   border-radius: 20px;
   padding: 30px;
+  margin: 20px;
 }
 
-.post h2 {
+.box h2 {
   display: inline-block;
-  margin: 0;
+  margin: 10px 0;
 }
 
-.postIdFollow {
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.userid {
-  font-size: 33px;
-}
-
-.postIdFollow form {
+.box h2 form {
   display: inline-block;
 }
 
-.postImage {
+.box img {
   width: 100%;
   margin: 10px 0;
 }
 
-.postImage img{
-  width: 100%;
-  height: 100%;
-}
-
-/* #butn{
-  display: flex;
-  justify-content: center;
-} */
-
-.postHeart button{
+.box .btn_good{
   color: black;
   background-color: #E18F8F ;
 }
 
-/* .fa-regular.fa-heart.liked {
-  color: red; 
-} */
+.box #butn{
+  display: flex;
+  justify-content: center;
+}
 
-#text_container {
-  border: 2px solid #8FB996;
-  width: 450px;
-  height: 150px;
-  margin: auto;
-  padding: auto;
-  margin-top: 10px;
-  padding: 10px;
+#heart{
+  width: 3px;
 }
