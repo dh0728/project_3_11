@@ -29,9 +29,16 @@
               </form>
           </div>
         </h2>
-
-        <hr>
-      <div class="postImage"><img src="/image/<%=showdb[i].postImage %>"></div>
+      
+        <div class="carouselBox">
+          <div class="carousel" data-id="<%=showdb[i].postImage.length %>">
+            <% for (let j=0; j<showdb[i].postImage.length; j++) { %>
+              <img class="cell" src="/image/<%=showdb[i].postImage[j] %>">
+            <% } %>
+          </div>
+        </div>
+      <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; margin : 0px;" class="prev-button<%= i %>"s >이전</div>
+      <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; margin : 0px;" class="next-button<%= i %>">다음</div>
 
       <div class="postHeart">
         <form action="/home/good?_method=PUT" method="POST">

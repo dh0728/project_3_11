@@ -86,7 +86,7 @@ div {
   padding-top: 20px;
   padding-bottom: 73px;
   margin: 20px;
-  width: 600px;
+  width: 800px;
   height: 700px;
 }
 
@@ -100,16 +100,43 @@ div {
   font-size: 33px;
 }
 
-.postImage {
-  display: flex;
-  align-items: center;
+/* .carousel{
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+} */
+
+
+.carousel .cell{
+  width: 350px;
+  height: 300px;
+  border-radius: 20px;
+  transition: all 0.5s;
+  /* justify-content: left; */
+}
+.carouselBox{
+  margin:auto;
+  /* margin-top: 100px; */
+  width: 350px;
+  height: 350px;
+  overflow:hidden;
   justify-content: center;
 }
 
-.postImage img{
-  width: 400px;
-  height: 400px;
+.carousel {
+  width: 350px;
+  height: 300px;
+  display: flex;
+  /* align-items: center; */
+  /* 캐러셀 구현 */
+  transition: all 0.5s;
 }
+/* .prev-button, .next-button{
+  cursor:pointer;
+  border-radius: 5px;
+  border:1px solid black;
+  display:inline-block
+} */
 
 /* #butn{
   display: flex;
