@@ -2,34 +2,34 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <title>게시물 업로드</title>
-    <link rel="stylesheet" href="/css/upload.css">
+  <meta charset="UTF-8">
+  <title>게시물 업로드</title>
+  <link rel="stylesheet" href="/css/upload.css">
+  <link rel="stylesheet" href="/css/menu_button.css">
 </head>
 
 <body>
-  <div id="container">
-
-    <div id="header">
+  <div id="header">
     <img src="/src/logo.png" alt="로고">
     <div id="name">FOLLOW ME</div>
     <div id="logout">
       <a id="logout_btn" href="/logout">로그아웃</a>
     </div>
   </div>
-
+  <div id="container">
     <div id="add">
-      <form action="/home/upload" class="inputImg" method="POST" enctype="multipart/form-data"> <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
+      <form action="/home/upload" class="inputImg" method="POST" enctype="multipart/form-data">
+        <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
         <div id="imageCounter">0 / 0</div>
         <!-- 이미지 띄울 공간 -->
         <div class="addImage" id="imageShow">
           <div id="btn">
             <button type="button" onclick="showPreviousImage()"></button>
-            <button type="button" onclick="showNextImage()">></button>
+            <button type="button" onclick="showNextImage()"></button>
           </div>
         </div>
         <div class="select">
-          <input type="file" class="" name="postImage"accept="image/*" onchange="loadFiles(this)" multiple>
+          <input type="file" class="" name="postImage" accept="image/*" onchange="loadFiles(this)" multiple>
           <button type="button" onclick="deleteCurrentImage()" class="delete">삭제</button>
           <!-- 텍스트 -->
           <div class="addText">
@@ -39,9 +39,14 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="/js/upload.js" defer></script>
-        </form>
-      </div>
+      </form>
     </div>
+  </div>
+  <div class="button-container">
+    <button><a href="/home/" target="myframe">피드페이지</a></button>
+    <button><a href="/home/upload" target="myframe">업로드</a></button>
+    <button><a href="/home/mypage" target="myframe">마이페이지</a></button>
+  </div>
 </body>
 
-</html> 
+</html>
