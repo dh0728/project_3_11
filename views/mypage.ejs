@@ -44,15 +44,14 @@
   </div>
   <div class="postsBox">
     <div id="myPosts" class="gridContainer">
-      <!-- 임시데이터 -->
       <% for (let i=0; i <showdb.length; i++) { %>
         <div class="box-postImg">
-          <img src="/image/<%=showdb[i].postImage %>" alt="profileimg" id="postImg" class="postImg"
+          <img src="/image/<%=showdb[i].postImage[0] %>" alt="profileimg" id="postImg" class="postImg"
             postText="<%=showdb[i].postText %>">
         </div>
         <div id="modal<%= i %>" class="modal">
           <span class="close">&times;</span>
-          <img id="modalImage<%= i %>" class="modalImage" src="/image/<%=showdb[i].postImage %>">
+          <img id="modalImage<%= i %>" class="modalImage" src="/image/<%=showdb[i].postImage[0] %>">
           <div id="modalText<%= i %>" class="text modalText" postText="<%=showdb[i].postText %>">
           </div>
           <div class="modalButtons">

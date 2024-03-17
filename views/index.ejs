@@ -38,6 +38,27 @@
 
       <hr>
       <div class="postImage"><img src="/image/<%=showdb[i].postImage %>"></div>
+    <% for (let i=0; i <showdb.length; i++) { %>
+      <div class="post" id="<%= showdb[i]._id %>">
+        <h2>
+          <div class="postIdFollow">
+            <div class="userid"><%= showdb[i].userid %></div>
+              <form id="<%= showdb[i].userid %>" action="/home?_method=PUT" method="POST">
+                <button class="btn_follow" onclick="followed()" name="following" value="<%= showdb[i]._id %>">팔로우</button>
+                <!-- followed() : 팔로우 누르면 버튼 변하고 다시 안눌리게... 나중에 home.js에 추가-->
+              </form>
+          </div>
+        </h2>
+      
+        <div class="carouselBox">
+          <div class="carousel" data-id="<%=showdb[i].postImage.length %>">
+            <% for (let j=0; j<showdb[i].postImage.length; j++) { %>
+              <img class="cell" src="/image/<%=showdb[i].postImage[j] %>">
+            <% } %>
+          </div>
+        </div>
+      <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; margin : 0px;" class="prev-button<%= i %>"s >이전</div>
+      <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; margin : 0px;" class="next-button<%= i %>">다음</div>
 
       <div class="postHeart">
         <form action="/home/good?_method=PUT" method="POST">
@@ -74,9 +95,6 @@
         <button><a href="http://localhost:3000/home/mypage" target="myframe">마이페이지</a></button>
       </div>
       <script src="/js/home.js" defer>
-        // liked()
-        // followed()
-        // 가능하면...
       </script>
 
 </body>
