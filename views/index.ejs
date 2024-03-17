@@ -12,7 +12,7 @@
 
 <body>
   <div id="container">
-    <img src="/src/logo.png" alt="로고">
+    <img class="logo" src="/src/logo.png" alt="로고">
     <div id="name">FOLLOW ME</div>
     <div id="logout">
       <a id="logout_btn" href="/logout">로그아웃</a>
@@ -34,7 +34,7 @@
         <div class="carouselBox">
           <div class="carousel" data-id="<%=showdb[i].postImage.length %>">
             <% for (let j=0; j<showdb[i].postImage.length; j++) { %>
-              <img class="cell" src="/image/<%=showdb[i].postImage[j] %>">
+              <img style="width: 350px;" class="cell" src="/image/<%=showdb[i].postImage[j] %>">
             <% } %>
           </div>
         </div>
