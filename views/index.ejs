@@ -44,10 +44,14 @@
             <% } %>
         </div>
       </div>
-      <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; margin : 0px;"
-        class="prev-button<%= i %>" s>이전</div>
-      <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; margin : 0px;"
-        class="next-button<%= i %>">다음</div>
+      <div style="display: flex; justify-content: space-around">
+        <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; text-align: center; margin : 0px; padding: 5px;
+        background-color: #8FB996; width: 70px; color: white;"
+          class="prev-button<%= i %>" s>이전</div>
+        <div style="cursor:pointer; border-radius: 5px; border:1px solid black; display:inline-block; text-align: center; margin : 0px; padding: 5px;
+        background-color: #8FB996; width: 70px; color: white;"
+          class="next-button<%= i %>">다음</div>
+      </div>
 
       <div class="postHeart">
         <form action="/home/good?_method=PUT" method="POST">
