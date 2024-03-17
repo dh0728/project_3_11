@@ -127,10 +127,7 @@ img{
 }
 
 .carousel {
-  width: 350px;
-  height: 300px;
   display: flex;
-  align-items: center;
   /* 캐러셀 구현 */
   transition: all 0.5s;
 }
@@ -138,9 +135,6 @@ img{
   width: 350px;
   height: 300px;
   border-radius: 20px;
-  position: relative;
-  transition: all 0.5s;
-  /* justify-content: left; */
 }
 
 .postIdFollow form {
