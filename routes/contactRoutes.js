@@ -43,9 +43,6 @@ router
   .route("/mypage")
   .get(checkLogin,getMypage)
   .post(checkLogin,deletPost)
-// router
-//   .route("mypage/:id")
-//   .delete(checkLogin,deletPost)
 router
   .route("/mypage/update/:id")
   .get(checkLogin,updateGet)

@@ -6,7 +6,7 @@ const { post } = require("../routes/contactRoutes");
 const jwtSecret = process.env.JWT_SECRET;
 console.log(`◇◆${jwtSecret}◆◇`)
 
-//@desc Get 피트?화면 
+//@desc Get index화면 
 //@route Get /home 
 const getHome=asyncHandler(async (req, res) => {
   // console.log(req);
@@ -53,11 +53,6 @@ const createPost = asyncHandler(async (req, res)=>{
   const decoded= await jwt.verify(token, jwtSecret)
   preuser=decoded.id.toString()
   const user =await User.findById(preuser);
-  // console.log(req.files);
-  // console.log(req.body);
-  //console.log(preuser);
-  //console.log(typeof(preuser))
-  //console.log(user)
   const postImageArray = [];
   for(let i=0; i<req.files.length; i++){
     postImageArray.push(req.files[i].filename)
@@ -90,9 +85,6 @@ const updatePost = asyncHandler(async (req, res) => {
     postImageArray.push(req.files[i].filename)
   }
   postText = req.body.postText.toString();
-  //console.log(postImageArray);
-  //console.log(postText);
-  //console.log(req.params.id)
   const beforePost = await Post.findById(req.params.id)
   console.log(beforePost.userid)
   const post = await Post.findByIdAndUpdate(req.params.id,{
@@ -102,34 +94,10 @@ const updatePost = asyncHandler(async (req, res) => {
     goodNum:beforePost.goodNum,
     comment:beforePost.comment,
   },{ new: true })
-  // const token = req.cookies.token;
-  // const decoded= jwt.verify(token, jwtSecret)
-  // preuser=decoded.id.toString()
-  // const user =await User.findById(preuser);
-  // const showdb = await Post.find({userid:beforePost.userid})
-  // const showfollow = await Follower.findOne({userid:user.userid})
-  // res.render('mypage',{showdb : showdb, showfollow: showfollow});
   res.redirect('http://localhost:3000/home/mypage');
   });
-//@desc Update 게시글 
-//@route Put /home/:id 
-const updateContact = asyncHandler (async (req,res)=>{
-  const username = req.params.id;
-  const {postImage , postText }=req.body;
-  const post = await Post.findOne({userid : username});
-  if(!post){
-    res.status(404);
-    throw new Error("Contact not found")
-  }
-  post.postImage = postImage;
-  post.postText= postText;
-
-  post.save();
-  res.status(200).send("Contacts page")
-});
-
 //@desc delete 게시글 
-//@route delete /home/:id
+//@route delete /mypage
 const deletPost= asyncHandler(async(req,res)=>{
   const ID=req.body.postID
   console.log(ID)
@@ -171,4 +139,4 @@ const updateGood = asyncHandler(async (req, res) => {
   return res.redirect(`/home#${post_id}`)
 })
 
-module.exports = {createPost, updateContact,deletPost,addPostForm, getHome,getMypage,updateGet,updatePost, updateFollower, updateGood};
+module.exports = {createPost,deletPost,addPostForm, getHome,getMypage,updateGet,updatePost, updateFollower, updateGood};
