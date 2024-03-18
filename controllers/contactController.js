@@ -109,13 +109,15 @@ const deletPost= asyncHandler(async(req,res)=>{
 //@desc update follow
 //@route PUT /home
 const updateFollower = asyncHandler(async (req, res) => {
+
   const token = req.cookies.token;
   const decoded = jwt.verify(token, jwtSecret);
   const me_id = decoded.id;
   const post_id = req.body.following;
-  const following_id = await Post.findOne({_id: post_id}).userid
+  const following = await Post.findOne({_id: post_id})
+  const following_id = following.userid
   // 본인은 팔로우할 수 없어요~
-  const me = Follower.findOne({userobj: me_id})
+  const me = await Follower.findOne({userobj: me_id})
   if (me.userid === following_id){
     return res.redirect(`/home#${post_id}`)
   }
